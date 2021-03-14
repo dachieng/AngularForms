@@ -9,9 +9,13 @@
     <label for="name">Name</label>
   </div>
   <div class="col-md-8">
-    <input type="text" id="name" name="name" class="form-control" [(ngModel)]= "userSettings.name" required minlength="3" #test = "ngModel">
+    <input type="text" id="name" name="name" class="form-control" [(ngModel)]= "userSettings.name" required minlength="3" #test = "ngModel"
 
-    <div class="alert alert-danger" [hidden] ="test.valid || test.untouched">
+[class.submitting] = "form.submitted && test.invalid"
+
+    >
+
+    <div class="alert alert-danger" [hidden] ="!form.submitted || test.valid">
       Enter Name
     </div>
 
