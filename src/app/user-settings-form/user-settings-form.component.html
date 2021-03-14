@@ -3,20 +3,23 @@
     <h4>User Settings Form</h4>
   </div>
   <div class="card-body">
-    <form #form="ngForm" class="container">
+    <form #form="ngForm" class="container" ngNativeValidate>
 <div class="row mb-2">
   <div class="col-md-2">
     <label for="name">Name</label>
   </div>
   <div class="col-md-8">
-    <input type="text" id="name" name="name" class="form-control" [(ngModel)]= "userSettings.name">
+    <input type="text" id="name" name="name" class="form-control" [(ngModel)]= "userSettings.name" required minlength="3" #test>
+
+    <h4>{{test.className}}</h4>
+
   </div>
 </div>
 
 <div class="form-check mb-2">
   <div class="row">
     <div class="col-md-2">
-      <input type="checkbox" class="form-check-input" id="emailOffers" name="emailOffers" [(ngModel)] = "userSettings.emailOffers">
+      <input type="checkbox" class="form-check-input" id="emailOffers" name="emailOffers" [(ngModel)] = "userSettings.emailOffers" required>
     </div>
     <div class="col-md-8">
       <label for="emailOffers" class="form-check-label">Email Offers</label>
@@ -61,15 +64,25 @@
     <label for="notes" class="form-col-label">Notes</label>
   </div>
   <div class="col-md-8">
-    <textarea name="notes" id="notes" cols="30" rows="5" [(ngModel)] = "userSettings.notes">
+    <textarea name="notes" id="notes" cols="30" rows="5" [(ngModel)] = "userSettings.notes" #testVariable = "ngModel">
 
     </textarea>
+
+    <div>
+      <p>pristine :  {{testVariable.pristine}}</p>
+      <p>dirty : {{testVariable.dirty}} </p>
+      <p>touched : {{testVariable.touched}}</p>
+      <p>untouched : {{testVariable.untouched}}</p>
+      <p>valid : {{testVariable.valid}}</p>
+      <p>invalid : {{testVariable.invalid}}</p>
+    </div>
+
   </div>
 
 </div>
 
 <div class="col-md-2">
-  <div class="button btn btn-outline-primary" type="submit">Submit</div>
+  <input  class="button btn btn-outline-primary" type="submit" value = "Submit"/>
 </div>
 
 
