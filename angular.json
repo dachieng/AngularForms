@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "UserForm"
+  "defaultProject": "UserForm",
+  "cli": {
+    "analytics": false
+  }
 }
