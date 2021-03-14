@@ -3,15 +3,18 @@
     <h4>User Settings Form</h4>
   </div>
   <div class="card-body">
-    <form #form="ngForm" class="container" ngNativeValidate>
+    <form #form="ngForm" class="container" (ngSubmit)= "onSubmit(form)">
 <div class="row mb-2">
   <div class="col-md-2">
     <label for="name">Name</label>
   </div>
   <div class="col-md-8">
-    <input type="text" id="name" name="name" class="form-control" [(ngModel)]= "userSettings.name" required minlength="3" #test>
+    <input type="text" id="name" name="name" class="form-control" [(ngModel)]= "userSettings.name" required minlength="3" #test = "ngModel">
 
-    <h4>{{test.className}}</h4>
+    <div class="alert alert-danger" [hidden] ="test.valid || test.untouched">
+      Enter Name
+    </div>
+
 
   </div>
 </div>
@@ -19,7 +22,7 @@
 <div class="form-check mb-2">
   <div class="row">
     <div class="col-md-2">
-      <input type="checkbox" class="form-check-input" id="emailOffers" name="emailOffers" [(ngModel)] = "userSettings.emailOffers" required>
+      <input type="checkbox" class="form-check-input" id="emailOffers" name="emailOffers" [(ngModel)] = "userSettings.emailOffers" >
     </div>
     <div class="col-md-8">
       <label for="emailOffers" class="form-check-label">Email Offers</label>
@@ -64,7 +67,7 @@
     <label for="notes" class="form-col-label">Notes</label>
   </div>
   <div class="col-md-8">
-    <textarea name="notes" id="notes" cols="30" rows="5" [(ngModel)] = "userSettings.notes" #testVariable = "ngModel">
+    <textarea name="notes" id="notes" cols="30" rows="5" [(ngModel)] = "userSettings.notes" #testVariable = "ngModel" required>
 
     </textarea>
 
