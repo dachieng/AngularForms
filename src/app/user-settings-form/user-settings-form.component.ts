@@ -18,6 +18,16 @@ export class UserSettingsFormComponent implements OnInit {
     notes:null
   }
 
+  postError = false
+  postErrorMessage = ''
+
+  onHttpError(errorResponse: any){
+    console.log(errorResponse)
+    this.postError = true
+    this.postErrorMessage = errorResponse.console.error.errorMessage;
+
+  }
+
   userSettings:UserSettings = {...this.originalUserSettings}
 
   constructor(private dataService:DataService) { }
@@ -32,7 +42,7 @@ export class UserSettingsFormComponent implements OnInit {
     console.log(form.valid)
     this.dataService.postUserSettings(this.userSettings).subscribe(
       success => console.log("results : ",success),
-      err => console.log("error : ", err)
+      err => this.onHttpError(err)
     )
   }
 
