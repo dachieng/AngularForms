@@ -14,6 +14,9 @@ export class DataService {
     //return of(userSettings)
     return this.http.post<UserSettings>('https://putsreq.com/cVQlVdubRNiDQxvpwLwB',userSettings)
 
+  }
 
+  getSubscriptionType():Observable<string[]>{
+    return of(['Monthly','Annual','Decade'])
   }
 }

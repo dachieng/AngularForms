@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { DataService } from '../data/data.service';
 import { UserSettings } from '../data/user-settings';
 
@@ -20,6 +21,7 @@ export class UserSettingsFormComponent implements OnInit {
 
   postError = false
   postErrorMessage = ''
+  subscriptionTypes:Observable<string[]>
 
   onHttpError(errorResponse: any){
     console.log(errorResponse)
@@ -35,6 +37,7 @@ export class UserSettingsFormComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.subscriptionTypes = this.dataService.getSubscriptionType()
 
   }
 

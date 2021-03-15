@@ -59,9 +59,8 @@
   </div>
   <div class="col-md-8">
     <select name="subscriptionType" id="subscriptionType" class="form-control" [(ngModel)] = "userSettings.subscriptionType">
-        <option value="Monthly">Monthly</option>
-        <option value="Annual">Annual</option>
-        <option value="Lifetime">Lifetime</option>
+        <option *ngFor = "let s of subscriptionTypes | async">{{s}}</option>
+
     </select>
   </div>
 </div>
