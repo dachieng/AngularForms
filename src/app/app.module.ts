@@ -16,7 +16,7 @@ import { UserSettingsFormComponent } from './user-settings-form/user-settings-fo
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

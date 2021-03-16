@@ -17,11 +17,13 @@ export class UserSettingsFormComponent implements OnInit {
     subscriptionType:null,
     interfaceStyle:null,
     notes:null
+
   }
 
   postError = false
   postErrorMessage = ''
   subscriptionTypes:Observable<string[]>
+  myValue = 1
 
   onHttpError(errorResponse: any){
     console.log(errorResponse)
